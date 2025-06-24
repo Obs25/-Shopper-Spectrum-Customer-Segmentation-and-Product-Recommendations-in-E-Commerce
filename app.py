@@ -30,11 +30,7 @@ def load_models():
 
 df = load_data()
 kmeans, scaler, item_sim_df, product_map = load_models()
-
-# Strip whitespace from product descriptions
 product_map_cleaned = product_map.apply(lambda x: x.strip())
-
-# Reverse mapping: description → code
 product_reverse_map = product_map_cleaned.reset_index().drop_duplicates(subset='Description').set_index('Description')['StockCode']
 
 # Sidebar Nav
